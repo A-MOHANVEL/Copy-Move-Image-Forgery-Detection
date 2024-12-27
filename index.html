@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy-Move Detection Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .upload-container {
+            margin-bottom: 20px;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        .result-container img {
+            max-width: 80%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Copy-Move Detection Tool</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="upload-container">
+            <label for="img1">Choose the first image (img1): </label>
+            <input type="file" id="img1" name="img1" required><br><br>
+            <label for="img2">Choose the second image (img2): </label>
+            <input type="file" id="img2" name="img2" required><br><br>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    {% if result_path %}
+    <div class="result-container">
+        <h2>Potential Copy-Moved Regions</h2>
+        <p>Found {{ match_count }} potential copy-moved regions.</p>
+        <img src="{{ result_path }}" alt="Result Image">
+    </div>
+    {% endif %}
+</body>
+</html>
